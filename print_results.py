@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/print_results.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:
+# PROGRAMMER: Taylor Creekbaum
+# DATE CREATED: October 6, 2018
 # REVISED DATE: 
 # PURPOSE: Create a function print_results that prints the results statistics
 #          from the results statistics dictionary (results_stats_dic). It 
@@ -62,5 +62,35 @@ def print_results(results_dic, results_stats_dic, model,
     Returns:
            None - simply printing results.
     """    
-    None
-                
+    print('\nThe {} model was used to classify images of dogs.'
+          .format(model.upper()))
+    print('Of the {} images analyzed, {} were of dogs and {} were not.'
+          .format(results_stats_dic['n_images'], 
+                  results_stats_dic['n_dogs_img'],
+                  results_stats_dic['n_notdogs_img']))
+    print('\nThe following statistics were collected:')
+    longest_key = max(map(len, results_stats_dic)) # Used for formatting purposes
+    print('Statistic Name'.ljust(longest_key, ' ') + '\t| Statistic Value')
+    for stat in results_stats_dic:
+            if stat[0] == 'p':
+                print('{}\t| {:.2f}%'.format(stat.ljust(longest_key, ' '),
+                                             results_stats_dic[stat]))
+    
+    if print_incorrect_dogs and (results_stats_dic['n_correct_dogs'] + 
+                                 results_stats_dic['n_correct_notdogs'] !=
+                                 results_stats_dic['n_images']):
+        print("\nIncorrectly classified dog images:")
+        for file in results_dic:
+            if sum(results_dic[file][3:]) == 1:
+                print('File \'{} \'was incorrectly classified as a {}'
+                      .format(file, results_dic[file][1]))
+        
+    if print_incorrect_breed and (results_stats_dic['n_correct_dogs'] !=
+                                     results_stats_dic['n_correct_breed']):
+        print("\nIncorrectly classified dog breeds:")
+        for file in results_dic:
+            if sum(results_dic[file][3:]) == 2 and results_dic[file][2] == 0:
+                print('File \'{}\', a {}, was incorrectly classified as a {}'
+                      .format(file, results_dic[file][0],
+                              results_dic[file][1]))
+    return None
