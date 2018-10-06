@@ -65,8 +65,9 @@ def print_results(results_dic, results_stats_dic, model,
                   results_stats_dic['n_dogs_img'],
                   results_stats_dic['n_notdogs_img']))
     print('\nThe following statistics were collected:')
-    longest_key = max(map(len, results_stats_dic)) # Used for formatting purposes
+    longest_key = max(map(len, results_stats_dic)) # Used for formatting
     print('Statistic Name'.ljust(longest_key, ' ') + '\t| Statistic Value')
+    
     for stat in results_stats_dic:
             if stat[0] == 'p':
                 print('{}\t| {:.2f}%'.format(stat.ljust(longest_key, ' '),
