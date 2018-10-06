@@ -1,0 +1,75 @@
+Command Line Arguments:
+     dir = uploaded_images/ 
+    arch = alexnet 
+ dogfile = dognames.txt
+
+Pet Image Label Dictionary has 4 key-value pairs.
+Below are 4 of them:
+ 1 key:                     Dog_01.jpg  label:                        dog
+ 2 key:                     Dog_02.jpg  label:                        dog
+ 3 key:                  Ferret_01.jpg  label:                     ferret
+ 4 key:                 Stapler_01.jpg  label:                    stapler
+
+     MATCH:
+
+                 Ferret_01.jpg: 
+Real:                     ferret   Classifier: black-footed ferret, ferret, mustela nigripes
+
+ NOT A MATCH:
+
+                    Dog_01.jpg: 
+Real:                        dog   Classifier:      borzoi, russian wolfhound
+
+                    Dog_02.jpg: 
+Real:                        dog   Classifier:      borzoi, russian wolfhound
+
+                Stapler_01.jpg: 
+Real:                    stapler   Classifier: ballpoint, ballpoint pen, ballpen, biro
+
+# Total Images 4 # Matches: 1 # NOT Matches: 3
+
+     MATCH:
+
+                 Ferret_01.jpg: 
+Real:                     ferret   Classifier: black-footed ferret, ferret, mustela nigripes  
+PetLabelDog: 0  ClassLabelDog: 0
+
+ NOT A MATCH:
+
+                    Dog_01.jpg: 
+Real:                        dog   Classifier:      borzoi, russian wolfhound  
+PetLabelDog: 1  ClassLabelDog: 1
+
+                    Dog_02.jpg: 
+Real:                        dog   Classifier:      borzoi, russian wolfhound  
+PetLabelDog: 1  ClassLabelDog: 1
+
+                Stapler_01.jpg: 
+Real:                    stapler   Classifier: ballpoint, ballpoint pen, ballpen, biro  
+PetLabelDog: 0  ClassLabelDog: 0
+
+# Total Images 4 # Matches: 1 # NOT Matches: 3
+
+ ** Statistics from calculates_results_stats() function:
+N Images:  4  N Dog Images:  2  N NotDog Images:  2 
+Pct Corr dog: 100.0 Pct Corr NOTdog: 100.0  Pct Corr Breed:   0.0
+
+ ** Check Statistics - calculated from this function as a check:
+N Images:  4  N Dog Images:  2  N NotDog Images:  2 
+Pct Corr dog: 100.0 Pct Corr NOTdog: 100.0  Pct Corr Breed:   0.0
+
+The ALEXNET model was used to classify images of dogs.
+Of the 4 images analyzed, 2 were of dogs and 2 were not.
+
+The following statistics were collected:
+Statistic Name     	| Statistic Value
+pct_match          	| 25.00%
+pct_correct_dogs   	| 100.00%
+pct_correct_breed  	| 0.00%
+pct_correct_notdogs	| 100.00%
+
+Incorrectly classified dog breeds:
+File 'Dog_01.jpg', a dog, was incorrectly classified as a borzoi, russian wolfhound
+File 'Dog_02.jpg', a dog, was incorrectly classified as a borzoi, russian wolfhound
+
+** Total Elapsed Runtime: 0:0:0
