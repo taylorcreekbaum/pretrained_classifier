@@ -63,10 +63,11 @@ def classify_images(images_dir, results_dic, model):
     """
     image_files = listdir(images_dir)
     for file in image_files:
-      image_path = join(images_dir, file)
-      results_dic[file].append(classifier(image_path, model).lower().strip())
-      if results_dic[file][0] in results_dic[file][1]:
-        results_dic[file].append(1)
-      else:
-        results_dic[file].append(0)
+      if not file.startswith('.'):
+        image_path = join(images_dir, file)
+        results_dic[file].append(classifier(image_path, model).lower().strip())
+        if results_dic[file][0] in results_dic[file][1]:
+          results_dic[file].append(1)
+        else:
+          results_dic[file].append(0)
     return None 
